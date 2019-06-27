@@ -37,4 +37,6 @@ workflows:
   unit-tests:
     jobs:
       - node
-      - test
+      - test:
+          requires:
+            - node
