@@ -40,3 +40,4 @@ workflows:
       - test:
           requires:
             - node
+            - test
