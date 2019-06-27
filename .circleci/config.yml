@@ -41,10 +41,11 @@ jobs:
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
       - run:
-          - name: list
-          - command: |
-                ls
-                pwd
+          name: list
+          command: ls
+      - run:
+          name: directory
+          command: pwd
       - run:
           name: Run unit tests
           command: yarn test
