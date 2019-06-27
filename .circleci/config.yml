@@ -24,6 +24,8 @@ jobs:
           paths:
             - node_modules
   test:
+    docker:
+      - image: circleci/node:10.15.3
     steps:
       - run:
           name: Run unit tests
