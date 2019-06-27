@@ -5,7 +5,7 @@ jobs:
     docker:
       - image: circleci/node:10.15.3
 
-    working_directory: ~/cicd-circleci
+#    working_directory: ~/cicd-circleci
 
     steps:
       - checkout
@@ -34,7 +34,7 @@ jobs:
     docker:
       - image: circleci/node:10.15.3
 
-    working_directory: ~/cicd-circleci
+#    working_directory: ~/cicd-circleci
 
     steps:
       - checkout
