@@ -1,7 +1,7 @@
 version: 1
 
 jobs:
-  node:
+  build:
     docker:
       - image: circleci/node:10.15.3
     steps:
@@ -23,20 +23,9 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
           paths:
             - node_modules
-  test:
-    docker:
-      - image: circleci/node:10.15.3
-    steps:
       - run:
           name: Run unit tests
           command: yarn test
-
-
-workflows:
-  version: 2
-  unit-tests:
-    jobs:
-      - node
-      - test:
-          requires:
-            - node
+      - run:
+          name: Build project
+          command: yarn build
