@@ -30,17 +30,17 @@ jobs:
           name: Build project
           command: yarn build
 
-    test:
-      docker:
-        - image: circleci/node:10.15.3
+  test:
+    docker:
+      - image: circleci/node:10.15.3
 
-      working_directory: ~/cicd-circleci
+    working_directory: ~/cicd-circleci
 
-      steps:
-        - checkout
-        - run:
-            name: Run unit tests
-            command: yarn test
+    steps:
+      - checkout
+      - run:
+          name: Run unit tests
+          command: yarn test
 
 workflows:
   version: 2
