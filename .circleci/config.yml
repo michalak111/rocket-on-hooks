@@ -53,10 +53,7 @@ jobs:
     machine:
       enabled: true
     steps:
-      - run:
-          name: Deploy Over SSH
-          command: |
-            ls
+      - run: ls & sh ./deploy.sh
 #            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no "cd rocket-on-hooks && ./deploy.sh $CIRCLE_BRANCH"
 workflows:
   version: 2
