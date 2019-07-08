@@ -57,7 +57,7 @@ jobs:
       - run:
           name: list
           command: ls
-      - run: ls && sh ./deploy.sh
+      - run: sh ./deploy.sh  $CIRCLE_BRANCH
 #            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no "cd rocket-on-hooks && ./deploy.sh $CIRCLE_BRANCH"
 workflows:
   version: 2
