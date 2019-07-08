@@ -54,10 +54,8 @@ jobs:
       enabled: true
     steps:
       - checkout
-      - run:
-          name: list
-          command: ls
-      - run: sh ./deploy.sh  $CIRCLE_BRANCH
+      - run: echo $CIRCLE_BRANCH
+      - run: sh ./deploy.sh $CIRCLE_BRANCH
 #            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no "cd rocket-on-hooks && ./deploy.sh $CIRCLE_BRANCH"
 workflows:
   version: 2
