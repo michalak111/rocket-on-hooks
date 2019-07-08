@@ -49,7 +49,14 @@ jobs:
       - run:
           name: Run unit tests
           command: yarn test
-
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - run:
+          name: Deploy Over SSH
+          command: |
+            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no "pwd"
 workflows:
   version: 2
   build-and-test:
@@ -58,3 +65,9 @@ workflows:
       - test:
           requires:
             - build
+      - deploy:
+          requires:
+            - build
+          #filters:
+            #branches:
+             #only: master
