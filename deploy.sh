@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-ssh naava@217.182.76.91 -p 13579 -o StrictHostKeyChecking=no <<EOF
+ ssh testsite@vps704954.ovh.net -o StrictHostKeyChecking=no <<EOF
   cd rocket-on-hooks
   git checkout $1
   git pull
