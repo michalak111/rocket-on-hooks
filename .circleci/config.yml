@@ -56,7 +56,7 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            sudo sh .deploy.sh
+            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no && pwd
 workflows:
   version: 2
   build-and-test:
