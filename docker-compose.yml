@@ -7,7 +7,7 @@ services:
       context: ./
     labels:
       - "traefik.enable=true"
-      - "traefik.frontend.rule=Host:testsite.vps704954.ovh.net
+      - "traefik.frontend.rule=Host:${BRANCH}.vps704954.ovh.net
       - "traefik.port=80"
     networks:
       - web
