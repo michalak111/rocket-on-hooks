@@ -56,7 +56,9 @@ jobs:
       - run:
           name: Deploy Over SSH
           command: |
-            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no "pwd"
+            ssh $SSH_USER@$SSH_HOST -o StrictHostKeyChecking=no
+            ls
+            pwd
 workflows:
   version: 2
   build-and-test:
