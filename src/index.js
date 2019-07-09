@@ -32,7 +32,7 @@ export const reducer = (state = {}, action) => {
 };
 
 const initialState = {
-  rockets: [1],
+  rockets: [1, 2],
   nightMode: true
 };
 
