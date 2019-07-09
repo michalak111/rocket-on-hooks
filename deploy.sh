@@ -5,6 +5,6 @@ ssh rocket-on-hooks@vps704954.ovh.net -o StrictHostKeyChecking=no <<EOF
   git checkout $1
   git pull
   docker-compose -f docker-compose.yml -p $1 stop
-  docker-compose -f docker-compose.yml -p $1 up -e BRANCH=$1 --build -d
+  BRANCH=$1 docker-compose -f docker-compose.yml -p $1 up --build -d
   exit
 EOF
