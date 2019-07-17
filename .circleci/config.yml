@@ -1,0 +1,69 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.15.3
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+
+      - run: yarn install
+
+      - save_cache:
+          key: yarn-v1-{{ checksum "yarn.lock" }}-{{ arch }}
+          paths:
+            - ~/.cache/yarn
+
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+          paths:
+            - node_modules
+      - run:
+          name: Build project
+          command: yarn build
+
+  test:
+    docker:
+      - image: circleci/node:10.15.3
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: node-v1-{{ checksum "package.json" }}-{{ arch }}
+      - run:
+          name: list
+          command: ls
+      - run:
+          name: directory
+          command: pwd
+      - run:
+          name: Run unit tests
+          command: yarn test
+  deploy:
+    machine:
+      enabled: true
+    steps:
+      - checkout
+      - run: echo $CIRCLE_BRANCH
+      - run: sh ./deploy.sh $CIRCLE_BRANCH
+
+workflows:
+  version: 2
+  build-and-test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+             only: master

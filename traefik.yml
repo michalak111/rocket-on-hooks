@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  traefik:
+    image: traefik #check for the latest version https://github.com/containous/traefik/releases
+    restart: always
+    command: --api --docker # Enables the web UI and tells Traefik to listen to docker
+    ports:
+      - 80:80 #normal traffic
+      - 8080:8080 # The Web UI (enabled by --api)
+    networks:
+      - web
+    volumes: #host:container
+      - /var/run/docker.sock:/var/run/docker.sock #connect to the docker instance
+    container_name: traefik
+networks:
+  web:
+    external: true
