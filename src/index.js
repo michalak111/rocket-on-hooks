@@ -33,7 +33,7 @@ export const reducer = (state = {}, action) => {
 
 const initialState = {
   rockets: [1],
-  nightMode: true
+  nightMode: false
 };
 
 const MainContext = React.createContext();
