@@ -54,13 +54,13 @@ jobs:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
       - run:
           name: login to docker registry
-          run: docker login michalak.site:5000 --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD
+          command: docker login michalak.site:5000 --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD
       - run:
           name: build docker image
-          run: docker build -t michalak.site:5000/roh:master
+          command: docker build -t michalak.site:5000/roh:master
       - run:
           name: push docker image
-          run: docker push michalak.site:5000/roh:master
+          command: docker push michalak.site:5000/roh:master
 #      - run: echo $CIRCLE_BRANCH
 #      - run: sh ./deploy.sh $CIRCLE_BRANCH
 
