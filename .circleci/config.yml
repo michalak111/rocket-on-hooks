@@ -52,9 +52,9 @@ jobs:
       - checkout
       - restore_cache:
           key: node-v1-{{ checksum "package.json" }}-{{ arch }}
-      - run:
-          name: login to docker registry
-          command: docker login michalak.site:5000 --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD
+#      - run:
+#          name: login to docker registry
+#          command: docker login michalak.site:5000 --username $REGISTRY_USERNAME --password $REGISTRY_PASSWORD
       - run:
           name: build docker image
           command: docker build -t michalak.site:5000/roh:master
