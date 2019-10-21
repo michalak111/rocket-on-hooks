@@ -57,7 +57,7 @@ jobs:
           command: docker login docker.pkg.github.com -u michalak111 -p $REGISTRY_PASSWORD
       - run:
           name: build docker image
-          command: $ docker build -t docker.pkg.github.com/michalak111/rocket-on-hooks/roh:master
+          command: docker build -t docker.pkg.github.com/michalak111/rocket-on-hooks/roh:master
       - run:
           name: push docker image
           command: docker push docker.pkg.github.com/michalak111/rocket-on-hooks/roh:master
